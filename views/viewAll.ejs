@@ -1,0 +1,41 @@
+<% include header %>
+    <nav class="navbar navbar-default navbar-inverse" role="navigation">
+        <ul class="nav navbar-nav">
+            <li><a href="/" >Home</a></li>
+            <li><a href="/add" >Add Student</a></li>
+            <li class="active"><a href="/viewAll">View All Students</a></li>
+        </ul>
+    </nav>
+	<section class="container">
+		<% if(message != "Error") { %>
+            <table class="table table-condensed table-bordered">
+                <thead>
+                    <th>SURNAME</th>
+                    <th>FIRST NAME</th>
+                    <th>MIDDLE NAME</th>
+                    <th>SEX</th>
+                    <th>LEVEL</th>
+                    <th>DEPARTMENT</th>
+                    <th>FACULTY</th>
+                </thead>
+                <tbody>
+                    <% message.forEach(function(row) { %>
+                        <tr>
+                        <td><%= row.surname %></td>
+                        <td><%= row.firstname %></td>
+                        <td><%= row.middlename %></td>
+                        <td><%= row.sex %></td>
+                        <td><%= row.level %></td>
+                        <td><%= row.department %></td>
+                        <td><%= row.faculty %></td>
+                        <td>
+                            <i class="glyphicon glyphicon-edit"><a href="/update?sn=<%= row.surname%>&fn=<%= row.firstname%>">Edit &nbsp;</a></i>
+                            <i class="glyphicon glyphicon-trash"><a href="/deletes?sn=<%= row.surname%>&fn=<%= row.firstname%>">Delete</a></i>
+                        </td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        <% } %>
+	</section>
+<% include footer %>

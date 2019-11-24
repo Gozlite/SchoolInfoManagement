@@ -1,0 +1,41 @@
+<% include header %>
+   <nav class="navbar navbar-default navbar-inverse" role="navigation">
+        <ul class="nav navbar-nav">
+            <li class="active"><a href="/" >Home</a></li>
+            <li><a href="/add" >Add Student</a></li>
+            <li><a href="/viewAll">View All Students</a></li>
+        </ul>
+    </nav>
+	<section class="container">
+		<form action="/update" method="POST" class="text-center">
+            <h4 style="color: red;"></h4>
+            <!--Hidden fields-->
+            <input type="hidden" name="Hsurname" value="<%= message.surname %>" ><br/>
+            <input type="hidden" name="Hfirstname" value="<%= message.firstname %>" ><br/>
+            <!--End of Hidden fields-->
+            <input type="text" name="surname" placeholder="Surname" value="<%= message.surname %>" required ><br/>
+            <input type="text" name="firstname" placeholder="First Name" value="<%= message.firstname %>" required ><br/>
+            <input type="text" name="middlename" placeholder="Middle Name" value="<%= message.middlename %>" required><br/>
+            <select name="sex">
+                <option disabled>--Select gender--</option>
+                <option value="<%= message.sex %>" selected><%= message.sex %></option>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+            </select><br/>
+            <select name="level">
+                <option disabled >--Select level--</option>
+                <option value="<%= message.level %>" selected><%= message.level %></option>
+                <option value="100Level">100Level</option>
+                <option value="200Level">200Level</option>
+                <option value="300Level">300Level</option>
+                <option value="400Level">400Level</option>
+                <option value="500Level">500Level</option>
+                <option value="600Level">600Level</option>
+            </select><br/>
+            <input type="text" name="department" placeholder="Department" value="<%= message.department %>" required><br/>
+            <input type="text" name="faculty" placeholder="Faculty" value="<%= message.faculty %>" required><br/>
+            <input type="submit" name="submit" value="EDIT STUDENT" class="btn btn-primary"><br/>
+                
+        </form>
+	</section>
+<% include footer %>
